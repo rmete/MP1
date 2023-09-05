@@ -1,5 +1,11 @@
+
+
+import subprocess
+import sys
 import metapy
 
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 def tokens_lowercase(doc):
     #Write a token stream that tokenizes with ICUTokenizer (use the argument "suppress_tags=True"),
     tok = metapy.analyzers.ICUTokenizer(suppress_tags=True)
@@ -22,6 +28,8 @@ def tokens_lowercase(doc):
     return tokens
     
 if __name__ == '__main__':
+    # install('metapy')
+    # import metapy
     doc = metapy.index.Document()
     doc.content("I said that I can't believe that it only costs $19.95! I could only find it for more than $30 before.")
     print(doc.content()) #you can access the document string with .content()
